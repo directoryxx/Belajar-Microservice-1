@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {randomBytes} = require('crypto');
+const cors = require('cors');
 
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 //Pengganti DB
 const posts = {};
 
@@ -19,7 +21,7 @@ app.post('/posts', (req,res) => {
         id,title
     }
 
-    res.status(200).send(posts[id]);
+    res.status(201).send(posts[id]);
 });
 
 app.listen(4000,() =>{
